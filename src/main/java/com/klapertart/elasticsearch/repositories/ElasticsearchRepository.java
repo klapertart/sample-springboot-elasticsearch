@@ -5,7 +5,7 @@ import retrofit2.Call;
 import retrofit2.http.*;
 
 /**
- * @author tritr
+ * @author klapertart
  * @since 11/16/2023
  */
 public interface ElasticsearchRepository {

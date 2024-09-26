@@ -3,7 +3,7 @@ package com.klapertart.elasticsearch.model;
 import lombok.Data;
 
 /**
- * @author tritronik
+ * @author klapertart
  * @since 9/26/2024
  */
 

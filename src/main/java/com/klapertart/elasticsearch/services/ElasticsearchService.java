@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * @author tritr
+ * @author klapertart
  * @since 11/16/2023
  */
 

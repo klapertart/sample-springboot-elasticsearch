@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.time.Duration;
 
 /**
- * @author tritr
+ * @author klapertart
  * @since 11/16/2023
  */
 
