@@ -1,16 +1,15 @@
 package com.klapertart.elasticsearch.services;
 
 import com.klapertart.elasticsearch.model.ProductDocResponse;
-import com.klapertart.elasticsearch.properties.ElasticsearchProperty;
 import com.klapertart.elasticsearch.repositories.ElasticsearchRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author tritr
@@ -26,7 +25,9 @@ public class ElasticsearchService {
         this.retrofit = retrofit;
     }
 
-    public void getProductDoc(String id){
+    public ProductDocResponse.Product getProductDoc(String id){
+        ProductDocResponse.Product product = null;
+
         try{
             // set call api service
             ElasticsearchRepository elasticsearchRepository = retrofit.create(ElasticsearchRepository.class);
@@ -36,12 +37,15 @@ public class ElasticsearchService {
 
             if (response.isSuccessful()){
                 ProductDocResponse body = response.body();
-                log.info("Request Success, data : {} ", body.toString());
+                product = Objects.nonNull(body) && Objects.nonNull(body.get_source()) ? body.get_source() : null;
+                log.info("Request product success");
             }else {
-                throw new RuntimeException("get product failed");
+                log.warn("Request product failed");
             }
         }catch (IOException e){
-            e.printStackTrace();
+            log.warn("Runtime Exception: {}", e.getMessage());
         }
+
+        return product;
     }
 }

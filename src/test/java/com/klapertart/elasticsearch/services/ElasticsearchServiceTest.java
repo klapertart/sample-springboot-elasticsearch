@@ -1,5 +1,7 @@
 package com.klapertart.elasticsearch.services;
 
+import com.klapertart.elasticsearch.model.ProductDocResponse;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +19,7 @@ class ElasticsearchServiceTest {
 
     @Test
     void testGetProduct() {
-        service.getProductDoc("1");
+        ProductDocResponse.Product productDoc = service.getProductDoc("1");
+        Assertions.assertNotNull(productDoc);
     }
 }
