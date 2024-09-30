@@ -9,7 +9,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
  * @since 9/26/2024
  */
 
-@Document(indexName = "products")
+// indexname using alias
+@Document(indexName = "product")
 @Data
 public class Product {
     @Id
